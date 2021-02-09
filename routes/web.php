@@ -1,10 +1,21 @@
 <?php
 
 
-Route::get('/', function () {
+/*Route::get('/', function () {
    Artisan::call('config:cache');
    return redirect('admin');
-});
+});*/
+
+
+
+
+Route::get("/","Frontcontroller@show_home")->name("show-home");
+
+
+
+
+
+
 Route::get("get_recipe_share/{id}","RecipeController@get_recipe_share");
 Route::get("/admin","AuthenticationController@show_logins")->name('admin-login');
 Route::post("post_login","AuthenticationController@post_login")->name("post-login");

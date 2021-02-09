@@ -1,0 +1,9 @@
+@extends('front.layout')
+@section('title')
+@stop
+@section('metadata')
+@stop
+@section('content')
+@stop
+@section('footer')
+@stop
