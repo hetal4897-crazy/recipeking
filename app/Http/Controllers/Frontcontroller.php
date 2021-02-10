@@ -14,4 +14,5 @@ class Frontcontroller extends Controller
         return view("front.home");
     }
     
+    
 }
