@@ -21,6 +21,32 @@
               order:[[0,"DESC"]]
        });
    });
+
+    $('#chef_table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: $("#url_lang").val()+'/chef_data_table',
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'image', name: 'image'},
+            {data: 'name', name: 'name'},
+            {data: 'email', name: 'email'},
+            {data: 'phone', name: 'phone'},
+            {data: 'address', name: 'address'},
+            {data: 'about', name: 'about'},
+            {data: 'action', name: 'action'}
+        ],
+        columnDefs: [
+            { targets: 1,
+                render: function(data) {
+                    return '<img src="' + $("#url_lang").val() +'/public/upload/chef/'+data+'" style="width:100px">'
+                }
+            }
+        ],
+        order:[[0,"DESC"]]
+    });
+
+
  $(document).ready(function () {
        $('#latest_recipe_Table').DataTable({
            processing: true,

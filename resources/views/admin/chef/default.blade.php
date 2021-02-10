@@ -1,13 +1,13 @@
 @extends('admin.index')
 @section('title')
-    {{__('messages.Recipe')}}
+    {{__('messages.Chef')}}
 @stop
 @section('content')
     <div class="breadcrumbs">
         <div class="col-sm-4">
             <div class="page-header float-left">
                 <div class="page-title">
-                    <h1>{{__('messages.Recipe')}}</h1>
+                    <h1>{{__('messages.Chef')}}</h1>
                 </div>
             </div>
         </div>
@@ -15,7 +15,7 @@
             <div class="page-header float-right">
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
-                        <li class="active">{{__('messages.Recipe')}}</li>
+                        <li class="active">{{__('messages.Chef')}}</li>
                     </ol>
                 </div>
             </div>
@@ -37,18 +37,19 @@
                                 </div>
                             @endif
                             <div style="margin-bottom:10px">
-                                <a href="{{url('save_recipe/0/1')}}"
-                                   class="btn btn-primary">{{__('messages.Add Recipe')}}</a>
+                                <a href="{{url('save_chef/0')}}"
+                                   class="btn btn-primary">{{__('messages.Add Chef')}}</a>
                             </div>
-                            <table id="recipe_table" class="table table-striped table-bordered">
+                            <table id="chef_table" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
                                     <th>{{__('messages.Id')}}</th>
-                                    <th>{{__('messages.Category')}}</th>
-                                    <th>{{__('messages.Recipe Name')}}</th>
                                     <th>{{__('messages.Image')}}</th>
-                                    <th>{{__('messages.Create Name')}}</th>
-                                    <th>{{__('messages.Status')}}</th>
+                                    <th>{{__('messages.Name')}}</th>
+                                    <th>{{__('messages.Email')}}</th>
+                                    <th>{{__('messages.Phone')}}</th>
+                                    <th>{{__('messages.address')}}</th>
+                                    <th>{{__('messages.about')}}</th>
                                     <th>{{__('messages.Action')}}</th>
                                 </tr>
                                 </thead>

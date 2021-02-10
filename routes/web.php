@@ -35,7 +35,7 @@ Route::group(['middleware' => ['admin_check_exist']], function () {
 
 	Route::get("recipe","RecipeController@show_recipe")->name('recipe');
 	Route::get("recipe_datatable","RecipeController@recipe_datatable")->name('recipe_datatable');
-	Route::get("saverecipe/{id}/{step}","RecipeController@addrecipe");
+	Route::get("save_recipe/{id}/{step}","RecipeController@add_recipe");
 	Route::post("Saverecipestep1","RecipeController@Saverecipestep1");
 	Route::post("Saverecipestep2","RecipeController@Saverecipestep2");
 	Route::post("Saverecipestep3","RecipeController@Saverecipestep3");
@@ -68,5 +68,10 @@ Route::group(['middleware' => ['admin_check_exist']], function () {
     Route::get("setting","AuthenticationController@show_setting")->name('setting');
     Route::post("update_setting","AuthenticationController@update_setting")->name("update_setting");
 
+    Route::Get("chef","ChefController@show_chef")->name("chef");
+    Route::get("chef_data_table","ChefController@chef_data_table")->name("chef_data_table");
+    Route::get("delete_chef","ChefController@delete_chef")->name("delete_chef");
+    Route::get("save_chef/{id}","ChefController@save_chef")->name("save_chef");
+    Route::post("update_chef","ChefController@update_chef")->name("update_chef");
 
 });
