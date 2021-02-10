@@ -47,6 +47,12 @@
                     </a>
                 </li>
                 <li class="active">
+                    <a href="{{route('chef')}}">
+                        <i class="menu-icon fa fa-cutlery"></i>
+                        {{__('messages.Chef')}}
+                    </a>
+                </li>
+                <li class="active">
                     <a href="{{route('recipe')}}">
                         <i class="menu-icon ti-book"></i>
                         {{__('messages.Recipes')}}

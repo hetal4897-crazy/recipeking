@@ -17,7 +17,7 @@ class admin_check_exist
     public function handle($request, Closure $next)
     {
         if(Auth::user()){
-            //return $next($request);
+            return $next($request);
         }else{
             return redirect('/');
         }

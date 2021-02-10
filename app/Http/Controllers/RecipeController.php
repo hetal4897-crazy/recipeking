@@ -12,6 +12,7 @@ use App\Model\Ingredient_info;
 use App\Model\RecipeStep;
 use App\Model\NutritionInfo;
 use App\Model\Review;
+use App\Model\Chef;
 use DataTables;
 use Auth;
 
@@ -54,7 +55,7 @@ class RecipeController extends Controller
                 return $recipe->likes.','.$recipe->views.','.$recipe->share;
             })
             ->editColumn('action', function ($recipe) {
-                     $url=url('saverecipe/').'/'.$recipe->id.'/1';
+                     $url=url('save_recipe/').'/'.$recipe->id.'/1';
                      $view=url('view_recipe/').'/'.$recipe->id;
                      $approve=url('approve_recipe/').'/'.$recipe->id;
                      $delete_recipe=url('delete_recipe',array('id'=>$recipe->id));
@@ -74,14 +75,15 @@ class RecipeController extends Controller
             ->make(true);
    }
 
-   public function addrecipe($id,$step){
-        $getcateogry=Category::all();
-          $data=array();
+   public function add_recipe($id,$step){
+        $get_category=Category::where("is_deleted",'0')->get();
+        $get_chef = Chef::where("is_deleted",'0')->get();
+        $data=array();
         if($id!=0){
           $data=Recipe::with('Ingredientinfodata','NutritionInfodata','RecipeStepdata')->find($id);
         }
 
-        return view("admin.recipe.add")->with("category",$getcateogry)->with("recipe_id",$id)->with("step",$step)->with("data",$data);
+        return view("admin.recipe.add")->with("get_chef",$get_chef)->with("category",$get_category)->with("recipe_id",$id)->with("step",$step)->with("data",$data);
    }
 
    public function delete_recipe($id){
@@ -139,6 +141,7 @@ class RecipeController extends Controller
           $store->prep_time=$request->get("prep_time");
           $store->cook_time=$request->get("cook_time");
           $store->description=$request->get("description");
+          $store->chef_id=$request->get("chef_id");
           $store->is_approve='1';
           $store->serving=$request->get("serving");
           if ($request->hasFile('upload_image'))
@@ -162,7 +165,7 @@ class RecipeController extends Controller
              }
 
           $store->save();
-          return redirect("saverecipe/".$store->id."/2");
+          return redirect("save_recipe/".$store->id."/2");
    }
 
    public function Saverecipestep2(Request $request){
@@ -184,13 +187,13 @@ class RecipeController extends Controller
           $i++;
        }
 
-       return redirect("saverecipe/".$request->get("recipe_id")."/3");
+       return redirect("save_recipe/".$request->get("recipe_id")."/3");
    }
 
    public function Saverecipestep3(Request $request){
        if($request->get("recipe_id")==0){
           Session:flash("message",__('messages.First Add Basic Information'));
-          return redirect("saverecipe/0/1");
+          return redirect("save_recipe/0/1");
        }
        else{
            NutritionInfo::where("recipe_id",$request->get("recipe_id"))->delete();
@@ -204,7 +207,7 @@ class RecipeController extends Controller
           $store->value=$value[$i];
           $store->save();
        }
-       return redirect("saverecipe/".$request->get("recipe_id")."/4");
+       return redirect("save_recipe/".$request->get("recipe_id")."/4");
    }
 
    public function latest_recipe_datatable(){
@@ -230,7 +233,7 @@ class RecipeController extends Controller
    // dd($request->all());exit;
        if($request->get("recipe_id")==0){
           Session:flash("message",__('messages.First Add Basic Information'));
-          return redirect("saverecipe/0/1");
+          return redirect("save_recipe/0/1");
        }
       $name=$request->get("stepdetail");
       $totalstep=$request->get("totalstep");

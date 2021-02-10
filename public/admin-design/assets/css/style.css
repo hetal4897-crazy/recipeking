@@ -2478,3 +2478,6 @@ header .form-inline {
 	float: right;
 	margin-bottom: 10px;
 }
+.req_span{
+    color:red;
+}

@@ -60,17 +60,26 @@
                            {{csrf_field()}}
                            <input type="hidden" name="recipe_id" id="recipe_id" value="{{$recipe_id}}"/>
                            <div class="form-row">
-                              <div class="col-md-8">
+                              <div class="col-md-4">
                                  <label>{{__('messages.Recipe Name')}}<span style="color:red">*</span></label>
                                  <input type="text" required name="name" value="<?= isset($data->name)?$data->name:"" ?>" id="name" class="form-control" required placeholder="{{__('messages.Enter Recipe Name')}}"/>
                               </div>
+                               <div class="col-md-4">
+                                   <label>{{__('messages.Chef')}}<span style="color:red">*</span></label>
+                                   <select name="chef_id" required id="chef_id" class="form-control">
+                                       <option value="">{{__('messages.Select Chef')}}</option>
+                                       @foreach($get_chef as $cat)
+                                           <option value="{{$cat->id}}" <?= isset($data->chef_id)&&$cat->id==$data->chef_id?'selected="selected"':"" ?>>{{$cat->name}}</option>
+                                       @endforeach
+                                   </select>
+                               </div>
                               <div class="col-md-4">
-                                 <label>{{__('messages.Cateogry')}}<span style="color:red">*</span></label>                                
+                                 <label>{{__('messages.Category')}}<span style="color:red">*</span></label>
                                  <select name="category" required id="selectcategory" class="form-control">
                                     <option value="">{{__('messages.Select Category')}}</option>
                                     @foreach($category as $cat)
-                                       <option value="{{$cat->id}}" <?= isset($data->category_id)&&$cat->id==$data->category_id?'selected="selected"':"" ?>>{{$cat->name}}</option> 
-                                    @endforeach   
+                                       <option value="{{$cat->id}}" <?= isset($data->category_id)&&$cat->id==$data->category_id?'selected="selected"':"" ?>>{{$cat->name}}</option>
+                                    @endforeach
                                  </select>
                               </div>
                            </div>
@@ -94,9 +103,9 @@
                               </div>
                             <div class="form-row">
                                  <label>{{__('messages.Description')}}<span style="color:red">*</span></label>
-                                 
+
                                  <textarea id="description" placeholder="{{__('messages.Enter').' '.__('messages.Description')}}" class="form-control" name="description" required="" autocomplete="off"><?= isset($data->description)?$data->description:"" ?></textarea>
-                                
+
                               </div>
                            <div class="form-row ">
                               <div class="col-md-6">
@@ -109,24 +118,24 @@
                                                    @else
                                                       <img src="{{asset('public/img/imgplaceholder.jpg')}}" style="width:150px;margin-top:15px;margin-bottom:10px" alt="..." class="img-thumbnail imgsize" id="basic_img" >
                                                    @endif
-                                                
+
                                                 </button>
                                                    @if(isset($data->image))
                                                        <input type="file"  name="upload_image" id="upload_image" />
                                                    @else
                                                        <input type="file" required name="upload_image" id="upload_image" />
                                                    @endif
-                                               
+
                                              </div>
                                           </div>
-                                 
-                                
+
+
                               </div>
                            </div>
                            <div class="form-row" style="float:right" >
                                @if(Session::get("is_demo")==1)
                                   <button type="button" onclick="return alert('This function is currently disable as it is only a demo website, in your admin it will work perfect')" class="btn btn-primary">
-                                    {{__('messages.Save')}}  
+                                    {{__('messages.Save')}}
                                   </button>
                                 @else
                               <button  type="submit" class="btn btn-primary">{{__('messages.Save')}} </button>
@@ -139,7 +148,7 @@
                         <form action="{{url('Saverecipestep2')}}" method="post">
                               {{csrf_field()}}
                              <input type="hidden" name="recipe_id" id="recipe_id" value="{{$recipe_id}}"/>
-                        
+
                         <table class="table table-striped cmr1" id="sortable">
                            <thead>
                               <tr class="tdnew">
@@ -188,7 +197,7 @@
                          <div class="form-row" style="float:right" >
                             @if(Session::get("is_demo")==1)
                                   <button type="button" onclick="return alert('This function is currently disable as it is only a demo website, in your admin it will work perfect')" class="btn btn-primary">
-                                    {{__('messages.Save')}}  
+                                    {{__('messages.Save')}}
                                   </button>
                                 @else
                               <button  type="submit"  class="btn btn-primary">{{__('messages.Save')}}</button>
@@ -201,7 +210,7 @@
                         <form action="{{url('Saverecipestep3')}}" method="post">
                               {{csrf_field()}}
                              <input type="hidden" name="recipe_id" id="recipe_id" value="{{$recipe_id}}"/>
-                        
+
                        <table class="table table-striped cmr1" id="sortttable1">
                            <thead>
                               <tr class="tdnew">
@@ -249,7 +258,7 @@
                         <div class="form-row" style="float:right" >
                             @if(Session::get("is_demo")==1)
                                   <button type="button" onclick="return alert('This function is currently disable as it is only a demo website, in your admin it will work perfect')" class="btn btn-primary">
-                                    {{__('messages.Save')}}  
+                                    {{__('messages.Save')}}
                                   </button>
                                 @else
                               <button  type="submit"  class="btn btn-primary">{{__('messages.Save')}}</button>
@@ -267,7 +276,7 @@
                            <thead>
                               <tr class="tdnew">
                                  <td>{{__('messages.Step')}}</td>
-                                 <td>{{__('messages.Detail')}}</td>                                 
+                                 <td>{{__('messages.Detail')}}</td>
                                  <td>{{__('messages.Remove')}}</td>
                               </tr>
                            </thead>
@@ -287,9 +296,9 @@
                                     <input type="hidden" name="thumbimgdata[]" id="thumbimgdata{{$i}}" value="">
                                    <textarea class="form-control" style="margin-bottom:15px;margin-top:10px" id="stepdesc"  name="stepdetail[]"><?=isset($dr->description)?$dr->description:"" ?></textarea>
                                    <input type="file"  id="files{{$i}}" class="file_multi_video form-control" name="files[]" onchange="uploadalt('{{$i}}')" accept="video/*" placeholder="" >
-                                   
+
                                  </td>
-                                 
+
                                  <td>
                                     <button class="btn btn-danger" onclick="removerow('{{$i}}','step_')"><i class="fa fa-trash f-s-25"></i></button>
                                  </td>
@@ -303,20 +312,20 @@
                                     <video width="400" controls>
                                       <source src="#" id="video_here1" >
                                     </video>
-                                    <input type="hidden" name="image_real[]" value=""/> <!-- file_multi_video --> 
+                                    <input type="hidden" name="image_real[]" value=""/> <!-- file_multi_video -->
                                      <input type="hidden" name="thumbreal[]" id="thumbreal{{$i}}">
                                     <input type="hidden" name="thumbimgdata[]" id="thumbimgdata{{$i}}">
                                    <textarea class="form-control" style="margin-bottom:15px;margin-top:10px" id="stepdesc" name="stepdetail[]"></textarea>
                                    <input type="file" required id="files1" class="form-control" name="files[]" onchange="uploadalt('1')" accept="video/*" placeholder="" >
                                    <input type="hidden" name="image_real1" value=""/>
                                  </td>
-                                 
+
                                  <td>
                                     <button class="btn btn-danger" onclick="removerow(1,'step_')"><i class="fa fa-trash f-s-25"></i></button>
                                  </td>
                               </tr>
                               @endif
-                             
+
                               <input type="hidden" name="totalstep" id="totalstep" value="{{$i}}">
                            </tbody>
                         </table>
@@ -324,7 +333,7 @@
                         <div class="form-row" style="float:right" >
                             @if(Session::get("is_demo")==1)
                                   <button type="button" onclick="return alert('This function is currently disable as it is only a demo website, in your admin it will work perfect')" class="btn btn-primary">
-                                    {{__('messages.Save')}}  
+                                    {{__('messages.Save')}}
                                   </button>
                                 @else
                               <button  type="submit"  class="btn btn-primary">{{__('messages.Save')}}</button>

@@ -37,7 +37,7 @@ class CategoryController extends Controller
             })
             ->editColumn('action', function ($category) {
                 $delete_cat = url('delete_category', array('id' => $category->id));
-                return '<a onclick="edit_category(' . $category->id . ')"  data-toggle="modal" data-target="#edit_category" rel="tooltip" title="" class="m-b-10 m-l-5" data-original-title="Remove"><i class="fa fa-edit f-s-25" style="font-size: x-large;"></i></a><a onclick="delete_record(' . "'" . $delete_cat . "'" . ')" rel="tooltip"  class="m-b-10 m-l-5" data-original-title="Remove" style="margin-right: 10px;"><i class="fa fa-trash f-s-25" style="font-size: x-large;"></i></a>';
+                return '<a onclick="edit_category(' . $category->id . ')"  data-toggle="modal" data-target="#edit_category" rel="tooltip" title="" class="m-b-10 m-l-5" data-original-title="Remove"><i class="fa fa-edit f-s-25" style="font-size: x-large;margin-right: 10px"></i></a><a onclick="delete_record(' . "'" . $delete_cat . "'" . ')" rel="tooltip"  class="m-b-10 m-l-5" data-original-title="Remove" style="margin-right: 10px;"><i class="fa fa-trash f-s-25" style="font-size: x-large;"></i></a>';
 
             })
             ->make(true);
@@ -132,7 +132,6 @@ class CategoryController extends Controller
             if (file_exists($image_path)) {
                 unlink($image_path);
             }
-
         } else {
             $img_url = $request->get("real_img");
         }
