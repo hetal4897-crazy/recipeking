@@ -44,6 +44,7 @@
                                 <thead>
                                 <tr>
                                     <th>{{__('messages.Id')}}</th>
+                                    <th>{{__("messages.chef Name")}}</th>
                                     <th>{{__('messages.Category')}}</th>
                                     <th>{{__('messages.Recipe Name')}}</th>
                                     <th>{{__('messages.Image')}}</th>

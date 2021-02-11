@@ -51,32 +51,43 @@
                                 @endif
                                 <form action="{{route('update_setting')}}" method="post" enctype="multipart/form-data">
                                     {{csrf_field()}}
-                                    <div class="form-group">
-                                        <label for="name" class=" form-control-label">
-                                            {{__('messages.Privacy Policy')}}
-                                            <span style="color:red">*</span>
-                                        </label>
-                                        <textarea class="form-control" name="privacy_policy" id="privacy_policy"
-                                                  required><?= isset($setting->privacy_policy) ? $setting->privacy_policy : ""?></textarea>
+                                    <div class="col-md-6">
+                                        <label>{{__('messages.Facebook ID')}}  <span style="color:red">*</span></label>
+                                        <input type="text" id="facebook_id" name="facebook_id" required class="form-control" placeholder="{{__("messages.Enter").' '.__("messages.Facebook ID")}}"/>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="email" class=" form-control-label">
-                                            {{__('messages.Android Server Key')}}
-                                        </label>
-                                        <textarea required id="android_server_key" name="android_server_key"
-                                                  class="form-control"
-                                                  placeholder="{{__('messages.Android Server Key')}}"><?= isset($setting->android_server_key) ? $setting->android_server_key : ""?></textarea>
+                                    <div class="col-md-6">
+                                        <label>{{__('messages.Instagram ID')}}  <span style="color:red">*</span></label>
+                                        <input type="text" id="instagram_id" name="instagram_id" required class="form-control" placeholder="{{__("messages.Enter").' '.__("messages.Instagram ID")}}"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{__('messages.Twitter ID')}}  <span style="color:red">*</span></label>
+                                        <input type="text" id="twitter_id" name="twitter_id" required class="form-control" placeholder="{{__("messages.Enter").' '.__("messages.Twitter ID")}}"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{__('messages.youtube')}}  <span style="color:red">*</span></label>
+                                        <input type="text" id="youtube" name="youtube" required class="form-control" placeholder="{{__("messages.Enter").' '.__("messages.youtube")}}"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{__('messages.Email')}}  <span style="color:red">*</span></label>
+                                        <input type="text" id="email" name="email" required class="form-control" placeholder="{{__("messages.Enter").' '.__("messages.Email")}}"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{__('messages.About')}}  <span style="color:red">*</span></label>
+                                        <textarea id="about" name="about" required class="form-control" placeholder="{{__("messages.Enter").' '.__("messages.About")}}"></textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{__('messages.Favicon')}}  <span style="color:red">*</span></label>
+                                        @if(isset($data->favicon))
+                                            <img src="" />
+                                            <input type="file" id="favicon" name="favicon" required class="form-control"/>
+                                        @else
+                                            <input required type="file" id="favicon" name="favicon" required class="form-control"/>
+                                        @endif
 
                                     </div>
-                                    <div class="form-group">
-                                        <label for="email" class=" form-control-label">
-                                            {{__('messages.Iphone Server Key')}}
-                                        </label>
-                                        <textarea required id="ios_server_key" name="ios_server_key"
-                                                  class="form-control" value=""
-                                                  placeholder="{{__('messages.Iphone Server Key')}}"><?= isset($setting->ios_server_key) ? $setting->ios_server_key : ""?></textarea>
-
+                                    <div class="col-md-6">
+                                        <label>{{__('messages.About')}}  <span style="color:red">*</span></label>
+                                        <textarea id="about" name="about" required class="form-control" placeholder="{{__("messages.Enter").' '.__("messages.About")}}"></textarea>
                                     </div>
 
                                     <div class="form-group">

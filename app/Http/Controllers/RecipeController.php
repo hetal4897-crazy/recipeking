@@ -31,6 +31,14 @@ class RecipeController extends Controller
             ->editColumn('id', function ($recipe) {
                 return $recipe->id;
             })
+            ->editColumn('chef_name', function ($recipe) {
+                $data = Chef::find($recipe->chef_id);
+                if($data)
+                    return $data->name;
+                else
+                    return '';
+            })
+
             ->editColumn('category', function ($recipe) {
                 return isset($recipe->category->name)?$recipe->category->name:"";
             })
@@ -65,11 +73,11 @@ class RecipeController extends Controller
                      else{
                           $class="red";
                      }
-                     $return = '<a href="'.$url.'"   rel="tooltip" title="" class="m-b-10 m-l-5" data-original-title="Remove" style="margin-right: 10px;">
+                     return '<a href="'.$url.'"   rel="tooltip" title="" class="m-b-10 m-l-5" data-original-title="Remove" style="margin-right: 10px;">
                         <i class="fa fa-edit f-s-25" style="font-size: x-large;"></i></a><a href="'.$view.'"   rel="tooltip" title="" class="m-b-10 m-l-5" data-original-title="Remove" style="margin-right: 10px;">
                         <i class="fa fa-eye f-s-75" style="font-size: x-large;"></i></a><a href="'.$approve.'"   rel="tooltip" title="" class="m-b-10 m-l-5" data-original-title="Remove" style="margin-right: 10px;">
                         <i class="fa fa-ban f-s-75" style="color:'.$class.';font-size: x-large;"></i></a><a onclick="delete_record(' . "'" . $delete_recipe. "'" . ')" rel="tooltip"  class="m-b-10 m-l-5" data-original-title="Remove" style="margin-right: 10px;"><i class="fa fa-trash f-s-25" style="font-size: x-large;"></i></a>';
-                     return $return;
+
             })
 
             ->make(true);
@@ -97,36 +105,13 @@ class RecipeController extends Controller
                      unlink($image_path);
                 }
                 $d1=RecipeStep::where("recipe_id",$get_recipe->id)->get();
-                foreach($d1 as $d){
-                   if($d->video){
-                      $image_path = public_path() ."/upload/video/".$d->video;
-                        if(file_exists($image_path)) {
-                            try{
-                                          unlink($image_path);
-                                     }catch(\Exception $e){
-
-                                     }
-                        }
-                   }
-                   if($d->thumbnail	){
-                      $image_path = public_path() ."/upload/thumb/".$d->thumbnail	;
-                        if(file_exists($image_path)) {
-                            try{
-                                          unlink($image_path);
-                                     }catch(\Exception $e){
-
-                                     }
-                        }
-                   }
-                    $d->delete();
-               }
-               $get_recipe->delete();
+                $get_recipe->delete();
            }
           Session::flash("message",__('messages.recipe_del'));
           return redirect()->back();
    }
 
-   public function Saverecipestep1(Request $request){
+   public function Save_recipe_step1(Request $request){
       if($request->get("recipe_id")!=0){
           $store=Recipe::find($request->get("recipe_id"));
       }
@@ -163,15 +148,33 @@ class RecipeController extends Controller
                      unlink($image_path);
                   }
              }
+       if ($request->hasFile('video'))
+       {
+           $image_path="";
+           if($request->get("video")!=0){
+               $image_path = public_path() ."/upload/video/".$store->video;
+           }
+           $file = $request->file('video');
+           $filename = $file->getClientOriginalName();
+           $extension = $file->getClientOriginalExtension() ?: 'png';
+           $folderName = '/upload/video';
+           $picture = 'recipe_'.mt_rand(100000,999999). '.' . $extension;
+           $destinationPath = public_path() . $folderName;
+           $request->file('video')->move($destinationPath, $picture);
+           $store->video=$picture;
+           if(file_exists($image_path)) {
+               unlink($image_path);
+           }
+       }
 
           $store->save();
           return redirect("save_recipe/".$store->id."/2");
    }
 
-   public function Saverecipestep2(Request $request){
+   public function Save_recipe_step2(Request $request){
        if($request->get("recipe_id")==0){
           Session:flash("message",__('messages.First Add Basic Information'));
-          return redirect("saverecipe/0/1");
+          return redirect("save_recipe/0/1");
        }else{
            Ingredient_info::where("recipe_id",$request->get("recipe_id"))->delete();
        }
@@ -190,7 +193,7 @@ class RecipeController extends Controller
        return redirect("save_recipe/".$request->get("recipe_id")."/3");
    }
 
-   public function Saverecipestep3(Request $request){
+   public function Save_recipe_step3(Request $request){
        if($request->get("recipe_id")==0){
           Session:flash("message",__('messages.First Add Basic Information'));
           return redirect("save_recipe/0/1");
@@ -202,9 +205,9 @@ class RecipeController extends Controller
        $value=$request->get("nutri_value");
        for($i=0;$i<count($name);$i++){
           $store=new NutritionInfo();
-          $store->recipe_id=$request->get("recipe_id");
-          $store->name=$name[$i];
-          $store->value=$value[$i];
+          $store->recipe_id = $request->get("recipe_id");
+          $store->name = $name[$i];
+          $store->value = $value[$i];
           $store->save();
        }
        return redirect("save_recipe/".$request->get("recipe_id")."/4");
@@ -229,74 +232,20 @@ class RecipeController extends Controller
             ->make(true);
    }
 
-   public function Saverecipestep4(Request $request){
-   // dd($request->all());exit;
+   public function Save_recipe_step4(Request $request){
        if($request->get("recipe_id")==0){
           Session:flash("message",__('messages.First Add Basic Information'));
           return redirect("save_recipe/0/1");
        }
       $name=$request->get("stepdetail");
       $totalstep=$request->get("totalstep");
-      $video=$request->file("files");
-      $videols=array();
-      $thumbls=array();
-      $image_real=$request->get("image_real");
-      $image_thumb=$request->get("thumbreal");
-      $thumbimgdata=$request->get("thumbimgdata");
-      for($i=0;$i<count($name);$i++){
-                if(array_key_exists($i,$video)){
-                   $file = $video[$i];
-                   $filename = $file->getClientOriginalName();
-                   $extension = $file->getClientOriginalExtension() ?: 'mp4';
-                   $folderName = '/upload/video';
-                   $picture = 'video_'.mt_rand(100000,999999). '.' . 'mp4';
-                   $destinationPath = public_path() . $folderName;
-                   $video[$i]->move($destinationPath, $picture);
-                   $videols[$i] = $picture;
-                   $image_path="";
-                   if($image_real[$i]!=0){
-                      $image_path = public_path() ."/upload/video/".$image_real[$i];
 
-                   }
-                   if(file_exists($image_path)) {
-                     unlink($image_path);
-                   }
-
-                }else{
-                    $videols[$i]=$image_real[$i];
-                }
-                if(array_key_exists($i,$thumbimgdata)){
-                    $data = $thumbimgdata[$i];
-                    list($type, $data) = explode(';', $data);
-                    list(, $data)      = explode(',', $data);
-                    $folderName = '/upload/thumb/';
-                    $destinationPath = public_path() . $folderName;
-                    $file_name=uniqid() . '.png';
-                    $file = $destinationPath .$file_name;
-                    $data = base64_decode($data);
-                    file_put_contents($file, $data);
-                    $thumbls[$i] = $file_name;
-                    $image_path="";
-                    if($image_thumb[$i]!=0){
-                      $image_path = public_path() ."/upload/thumb/".$image_thumb[$i];
-
-                    }
-                    if(file_exists($image_path)) {
-                     unlink($image_path);
-                   }
-
-                }else{
-                    $thumbls[$i]=$image_thumb[$i];
-                }
-      }
       RecipeStep::where("recipe_id",$request->get("recipe_id"))->delete();
       for($i=0;$i<count($name);$i++){
           $store=new RecipeStep();
           $store->recipe_id=$request->get("recipe_id");
           $store->step_no=$i+1;
           $store->description=$name[$i];
-          $store->video=$videols[$i];
-          $store->thumbnail=$thumbls[$i];
           $store->save();
        }
       Session::flash("message",__('messages.Recipe Add Successfully'));

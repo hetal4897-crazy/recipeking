@@ -132,6 +132,7 @@
            ajax: $("#url_lang").val()+'/recipe_datatable',
            columns: [
                {data: 'id', name: 'id'},
+               {data: 'chef_name', name: 'chef_name'},
                {data: 'category', name: 'category'},
                {data: 'name', name: 'name'},
                {data: 'icon', name: 'icon'},
@@ -140,13 +141,13 @@
                {data: 'action', name: 'action'}
            ],
            columnDefs: [
-                { targets: 3,
+                { targets: 4,
                   render: function(data) {
                     console.log(data);
                     return '<img src="'+$("#url_lang").val()+'/public/upload/recipe/'+data+'" style="width:100px">'
                   }
                 } ,
-                { targets: 5,
+                { targets: 6,
                   render: function(data) {
                      var str=data.split(',');
                     return '<b>'+$("#Likes_lang").val()+':-</b>'+str[0]+'</br><b>'+$("#Views_lang").val()+':-</b>'+str[1]+'</br><b>'+$("#Share_lang").val()+':-</b>'+str[2];
@@ -210,15 +211,15 @@
     }
 
   function uploadalt(val){
-        if(document.getElementById("files"+val).files[0].size > 200000000){
+        if(document.getElementById("video").files[0].size > 200000000){
              alert("File is too big!");
-             document.getElementById("files"+val).value = "";
+             document.getElementById("video").value = "";
          }
         else{
-            var $source = $('#video_here'+val);
-            $source[0].src = URL.createObjectURL(document.getElementById("files"+val).files[0]);
+            var $source = $('#video_here');
+            $source[0].src = URL.createObjectURL(document.getElementById("video").files[0]);
             $source.parent()[0].load();
-              var file = document.getElementById("files"+val).files[0];
+              var file = document.getElementById("video").files[0];
               var fileReader = new FileReader();
               if (file.type.match('image')) {
                 fileReader.onload = function() {
@@ -254,7 +255,7 @@
                         var img = document.createElement('img');
                         img.src = image;
 
-                        document.getElementById("thumbimgdata"+val).value=image;
+                        //document.getElementById("thumbimgdata"+val).value=image;
                       //  document.getElementsByTagName('div')[0].appendChild(img);
                         URL.revokeObjectURL(url);
                       }
@@ -353,3 +354,46 @@ function delete_record(url) {
             window.location.reload();
         }
     }
+
+$(function () {
+    $("#lstable tbody").sortable({
+        cursor: "move",
+        placeholder: "sortable-placeholder",
+        helper: function (e, tr) {
+            var $originals = tr.children();
+            var $helper = tr.clone();
+            $helper.children().each(function (index) {
+                $(this).width($originals.eq(index).width());
+            });
+            return $helper;
+        }
+    }).disableSelection();
+});
+$(function () {
+    $("#lstablenutri tbody").sortable({
+        cursor: "move",
+        placeholder: "sortable-placeholder",
+        helper: function (e, tr) {
+            var $originals = tr.children();
+            var $helper = tr.clone();
+            $helper.children().each(function (index) {
+                $(this).width($originals.eq(index).width());
+            });
+            return $helper;
+        }
+    }).disableSelection();
+});
+$(function () {
+    $("#tdnew tbody").sortable({
+        cursor: "move",
+        placeholder: "sortable-placeholder",
+        helper: function (e, tr) {
+            var $originals = tr.children();
+            var $helper = tr.clone();
+            $helper.children().each(function (index) {
+                $(this).width($originals.eq(index).width());
+            });
+            return $helper;
+        }
+    }).disableSelection();
+});

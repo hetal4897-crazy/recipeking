@@ -143,6 +143,8 @@
 <script src="{{asset('public/admin-design/vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="{{asset('public/ckeditor/ckeditor.js')}}"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="{{asset('public/admin-design/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('public/admin-design/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('public/admin-design/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>

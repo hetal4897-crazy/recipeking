@@ -58,7 +58,7 @@
                                         <label for="name" class=" form-control-label">
                                             {{__('messages.Phone')}} <span class="req_span">*</span>
                                         </label>
-                                        <input type="text" required value="{{isset($data->phone)?$data->phone:""}}" id="phone" name="phone" class="form-control" placeholder="{{__('messages.Enter Chef Phone')}}" />
+                                        <input type="text" required value="{{isset($data->phone_no)?$data->phone_no:""}}" id="phone" name="phone" class="form-control" placeholder="{{__('messages.Enter Chef Phone')}}" />
                                     </div>
                                     <div class="form-group">
                                         <label for="name" class=" form-control-label">
@@ -70,7 +70,7 @@
                                         <label for="name" class=" form-control-label">
                                             {{__('messages.about')}} <span class="req_span">*</span>
                                         </label>
-                                        <textarea required name="about" id="about" class="form-control" placeholder="{{__('messages.Enter Chef About')}}" >{{isset($data->about)?$data->about:""}}</textarea>
+                                        <textarea required name="about" id="about" class="form-control" placeholder="{{__('messages.Enter Chef About')}}" >{{isset($data->about_us)?$data->about_us:""}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="name" class=" form-control-label">

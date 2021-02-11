@@ -114,5 +114,14 @@ return array(
     "Email Id Already Use By Other Chef" => "Email Id Already Use By Other Chef",
     "Chef Add Successfully" => "Chef Add Successfully",
     "Chef Update Successfully" => "Chef Update Successfully",
-    "Select Chef" => "Select Chef"
+    "Select Chef" => "Select Chef",
+    "video" => "Video",
+    "chef Name"=>"chef Name",
+    "Facebook ID" => "Facebook ID",
+    "Enter" => "Enter",
+    "Instagram ID" => "Instagram ID",
+    "Twitter ID" => "Twitter ID",
+    "youtube" => "Youtube",
+    "About" => "About",
+    "Favicon" => "Favicon"
  );

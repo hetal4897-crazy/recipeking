@@ -11,10 +11,10 @@
 	<meta name="author" content="Tastebite">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 @stop
-	
 
-@section('content')	
-	
+
+@section('content')
+
 	<div class="tstbite-search">
 		<div class="container">
 			<div class="input-group search-box">
@@ -147,9 +147,9 @@
 				</div>
 				<div class="swiper-button-next"></div>
 				<div class="swiper-button-prev"></div>
-			</div>	
+			</div>
 		</section>
-		
+
 		<style type="text/css" id="slider-css"></style>
 		<section class="tstbite-components my-4 my-md-5">
 			<div class="container">
@@ -158,78 +158,26 @@
 			        <div class="row">
 			            <div id="slider-1" class="carousel carousel-by-item slide" data-ride="carousel">
 			                <div class="carousel-inner" role="listbox">
-			                    <div class="carousel-item active">
-			                        <div class="col-lg-2 col-md-4 col-4">
-										<figure class="my-3 text-center tstbite-card">
-											<a href="category.html" class="tstbite-animation stretched-link rounded-circle">
-												<img src="{{asset('public/tastebite/images/menus/menu8.png')}}" class="rounded-circle" alt="Menu">
-											</a>
-											<figcaption class="mt-2">
-												<a href="category.html" class="tstbite-category-title">Pasta</a>
-											</figcaption>
-										</figure>
-									</div>
-			                    </div>
-			                    <div class="carousel-item">
-			                        <div class="col-lg-2 col-md-4 col-4">
-										<figure class="my-3 text-center tstbite-card">
-											<a href="category.html" class="tstbite-animation stretched-link rounded-circle">
-												<img src="{{asset('public/tastebite/images/menus/menu9.png')}}" class="rounded-circle" alt="Menu">
-											</a>
-											<figcaption class="mt-2">
-												<a href="category.html" class="tstbite-category-title">Pasta</a>
-											</figcaption>
-										</figure>
-									</div>
-			                    </div>
-			                    <div class="carousel-item">
-			                        <div class="col-lg-2 col-md-4 col-4">
-										<figure class="my-3 text-center tstbite-card">
-											<a href="category.html" class="tstbite-animation stretched-link rounded-circle">
-												<img src="{{asset('public/tastebite/images/menus/menu10.png')}}" class="rounded-circle" alt="Menu">
-											</a>
-											<figcaption class="mt-2">
-												<a href="category.html" class="tstbite-category-title">Pasta</a>
-											</figcaption>
-										</figure>
-									</div>
-			                    </div>
-			                    <div class="carousel-item">
-			                        <div class="col-lg-2 col-md-4 col-4">
-										<figure class="my-3 text-center tstbite-card">
-											<a href="category.html" class="tstbite-animation stretched-link rounded-circle">
-												<img src="{{asset('public/tastebite/images/menus/menu11.png')}}" class="rounded-circle" alt="Menu">
-											</a>
-											<figcaption class="mt-2">
-												<a href="category.html" class="tstbite-category-title">Pasta</a>
-											</figcaption>
-										</figure>
-									</div>
-			                    </div>
-			                    <div class="carousel-item">
-			                        <div class="col-lg-2 col-md-4 col-4">
-										<figure class="my-3 text-center tstbite-card">
-											<a href="category.html" class="tstbite-animation stretched-link rounded-circle">
-												<img src="{{asset('public/tastebite/images/menus/menu12.png')}}" class="rounded-circle" alt="Menu">
-											</a>
-											<figcaption class="mt-2">
-												<a href="category.html" class="tstbite-category-title">Pasta</a>
-											</figcaption>
-										</figure>
-									</div>
-			                    </div>
-			                    <div class="carousel-item">
-			                        <div class="col-lg-2 col-md-4 col-4">
-										<figure class="my-3 text-center tstbite-card">
-											<a href="category.html" class="tstbite-animation stretched-link rounded-circle">
-												<img src="{{asset('public/tastebite/images/menus/menu13.png')}}" class="rounded-circle" alt="Menu">
-											</a>
-											<figcaption class="mt-2">
-												<a href="category.html" class="tstbite-category-title">Pasta</a>
-											</figcaption>
-										</figure>
-									</div>
-			                    </div>
+                                <?php $i=0; ?>
+                                @foreach($category as $c)
+                                    @if($i==0)
+                                        <div class="carousel-item active">
+                                    @else
+                                         <div class="carousel-item">
+                                    @endif
+                                             <div class="col-lg-2 col-md-4 col-4">
+                                                <figure class="my-3 text-center tstbite-card">
+                                                    <a href="#" class="tstbite-animation stretched-link rounded-circle">
+                                                        <img src="{{asset('public/upload/category').'/'.$c->image}}" class="rounded-circle" alt="{{$c->name}}">
+                                                    </a>
+                                                    <figcaption class="mt-2">
+                                                        <a href="#" class="tstbite-category-title">{{$c->name}}</a>
+                                                    </figcaption>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                    <?php $i++; ?>
+                                @endforeach
 			                </div>
 			                <a class="carousel-control-prev" href="#slider-1" role="button" data-slide="prev">
 			                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -334,7 +282,7 @@
 							</div>
 						</div>
 					</div>
-				</div>	
+				</div>
 			</section> -->
 
 			<section class="tstbite-components my-4">
@@ -694,206 +642,18 @@
 				<section class="tstbite-components my-4 my-md-5">
 					<h5 class="py-3 mb-0">Latest Recipes</h5>
 					<div class="row">
+                        @foreach($get_latest_recipe as $ge)
 						<div class="col-lg-3 col-md-4 col-6">
 							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu20.jpg')}}" class="w-100" alt="Menu">
+								<a href="#" class="tstbite-animation stretched-link rounded-6">
+									<img src="{{asset('public/upload/recipe').'/'.$ge->image}}" class="w-100" alt="Menu">
 								</a>
 								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
+									<a href="#" class="text-black d-block mt-1 font-weight-semibold big">{{$ge->name}}</a>
 								</figcaption>
 							</figure>
 						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu21.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu22.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu23.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu24.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu25.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu26.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu27.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu28.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu29.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu30.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu31.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu32.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu33.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu34.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu35.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu36.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu37.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu38.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="col-lg-3 col-md-4 col-6">
-							<figure class="my-3 my-md-4 tstbite-card">
-								<a href="recipe-sidebar.html" class="tstbite-animation stretched-link rounded-6">
-									<img src="{{asset('public/tastebite/images/menus/menu39.jpg')}}" class="w-100" alt="Menu">
-								</a>
-								<figcaption class="mt-2">
-									<a href="recipe-sidebar.html" class="text-black d-block mt-1 font-weight-semibold big">Caramel Strawberry Milkshake</a>
-								</figcaption>
-							</figure>
-						</div>
+                        @endforeach
 					</div>
 					<div class="text-center py-5">
 						<a href="#0" class="btn btn-outline-dark px-5 py-2">Load More</a>

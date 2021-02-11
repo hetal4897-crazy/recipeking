@@ -9,4 +9,8 @@ class NutritionInfo extends Model
     //
     protected $table = 'nutrition_info';
     protected $primaryKey = 'id';
+    /**
+     * @var mixed
+     */
+    private $value;
 }
