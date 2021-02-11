@@ -19,5 +19,9 @@ class Frontcontroller extends Controller
         return view("front.home")->with("category",$get_category)->with("get_latest_recipe",$get_latest_recipe);
     }
 
+    public function view_recipe(){
+        return view("front.receip-detail");
+    }
+
 
 }

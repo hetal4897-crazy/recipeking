@@ -180,10 +180,10 @@
                                 @endforeach
 			                </div>
 			                <a class="carousel-control-prev" href="#slider-1" role="button" data-slide="prev">
-			                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			                    <img src="{{asset('public/tastebite/images/icons/left-arrow.svg')}}">
 			                </a>
 			                <a class="carousel-control-next" href="#slider-1" role="button" data-slide="next">
-			                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			                    <img src="{{asset('public/tastebite/images/icons/right-arrow2.svg')}}">
 			                </a>
 			            </div>
 			        </div>
@@ -452,7 +452,7 @@
 												<small>Yesterday</small>
 											</div>
 											<div class="ml-4 text-gray-300">
-												<img src="{{asset('public/tastebite/images/icons/chat.svg')}}assets/images/icons/chat.svg" alt="Icon">
+												<img src="{{asset('public/tastebite/images/icons/chat.svg')}}" alt="Icon">
 												<small>456</small>
 											</div>
 										</div>
@@ -550,88 +550,197 @@
 				</section>
 
 				<section class="tstbite-components my-4 my-md-5">
-					<h4 class="py-3 mb-0">Curated Collections</h4>
+					<h4 class="py-3 mb-0">Our Master Chef</h4>
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-xl-4 col-md-6">
 							<figure class="my-3 tstbite-card">
-								<a href="#0" class="tstbite-animation stretched-link rounded-top-6">
-									<img src="{{asset('public/tastebite/images/menus/menu14.jpg')}}" class="w-100" alt="Menu">
+								<a href="#0" class="tstbite-animation rounded-top-6">
+									<img src="{{asset('public/tastebite/images/chef/chef1.png')}}" class="w-100" alt="Menu">
 								</a>
-								<figcaption class="tstbite-collection border-top-0 rounded-bottom-6">
-									<div class="text-black pt-3 pb-4 px-4 text-right">
-										<h6 class="mb-3 md-lg-0 pr-0 pr-lg-4 text-left"><a href="#0">Sushi Combos for <br>your Next Party</a></h6>
-										<span class="btn btn-sm btn-outline-dark text-nowrap">156 Recipes</span>
+								<figcaption class="tstbite-delicious border-top-0 rounded-bottom-6">
+									<div class="text-black pt-3 pb-4 px-4">
+										<div class="w-100 float-left">
+											<div class="float-left">
+												<div class="fabrx-ratings has-rating rating">
+													<input type="radio" id="radio26" name="rate6" value="1" checked="checked">
+													<label for="radio26" class="custom-starboxes"></label>
+													<input type="radio" id="radio27" name="rate6" value="2">
+													<label for="radio27" class="custom-starboxes"></label>
+													<input type="radio" id="radio28" name="rate6" value="3">
+													<label for="radio28" class="custom-starboxes"></label>
+													<input type="radio" id="radio29" name="rate6" value="4">
+													<label for="radio29" class="custom-starboxes"></label>
+													<input type="radio" id="radio30" name="rate6" value="5">
+													<label for="radio30" class="custom-starboxes"></label>
+												</div>
+											</div>
+										</div>
+										<div class="clearfix"></div>
+										<h6 class="inter-font f-size-20 mb-0 font-weight-semibold"><a href="#0" class="text-black">Mighty Cheesy Breakfast Burger</a></h6>
+										<div class="custom-total-receip-box">
+											<span class="btn btn-sm btn-outline-dark text-nowrap">156 Recipes</span>
+										</div>
 									</div>
 								</figcaption>
 							</figure>
 						</div>
-						<div class="col-md-6">
+						<div class="col-xl-4 col-md-6">
 							<figure class="my-3 tstbite-card">
-								<a href="#0" class="tstbite-animation stretched-link rounded-top-6">
-									<img src="{{asset('public/tastebite/images/menus/menu15.jpg')}}" class="w-100" alt="Menu">
+								<a href="#0" class="tstbite-animation rounded-top-6">
+									<img src="{{asset('public/tastebite/images/chef/chef2.png')}}" class="w-100" alt="Menu">
 								</a>
-								<figcaption class="tstbite-collection border-top-0 rounded-bottom-6">
-									<div class="text-black pt-3 pb-4 px-4 text-right">
-										<h6 class="mb-3 md-lg-0 pr-0 pr-lg-4 text-left">
-											<a href="#0">Everything Bagel</a>
-										</h6>
-										<span class="btn btn-sm btn-outline-dark text-nowrap">156 Recipes</span>
+								<figcaption class="tstbite-delicious border-top-0 rounded-bottom-6">
+									<div class="text-black pt-3 pb-4 px-4">
+										<div class="w-100 float-left">
+											<div class="float-left">
+												<div class="fabrx-ratings has-rating rating">
+													<input type="radio" id="radio26" name="rate6" value="1" checked="checked">
+													<label for="radio26" class="custom-starboxes"></label>
+													<input type="radio" id="radio27" name="rate6" value="2">
+													<label for="radio27" class="custom-starboxes"></label>
+													<input type="radio" id="radio28" name="rate6" value="3">
+													<label for="radio28" class="custom-starboxes"></label>
+													<input type="radio" id="radio29" name="rate6" value="4">
+													<label for="radio29" class="custom-starboxes"></label>
+													<input type="radio" id="radio30" name="rate6" value="5">
+													<label for="radio30" class="custom-starboxes"></label>
+												</div>
+											</div>
+										</div>
+										<div class="clearfix"></div>
+										<h6 class="inter-font f-size-20 mb-0 font-weight-semibold"><a href="#0" class="text-black">Mighty Cheesy Breakfast Burger</a></h6>
+										<div class="custom-total-receip-box">
+											<span class="btn btn-sm btn-outline-dark text-nowrap">156 Recipes</span>
+										</div>
 									</div>
 								</figcaption>
 							</figure>
 						</div>
-						<div class="col-md-6">
+						<div class="col-xl-4 col-md-6">
 							<figure class="my-3 tstbite-card">
-								<a href="#0" class="tstbite-animation stretched-link rounded-top-6">
-									<img src="{{asset('public/tastebite/images/menus/menu14.jpg')}}" class="w-100" alt="Menu">
+								<a href="#0" class="tstbite-animation rounded-top-6">
+									<img src="{{asset('public/tastebite/images/chef/chef3.png')}}" class="w-100" alt="Menu">
 								</a>
-								<figcaption class="tstbite-collection border-top-0 rounded-bottom-6">
-									<div class="text-black pt-3 pb-4 px-4 text-right">
-										<h6 class="mb-3 md-lg-0 pr-0 pr-lg-4 text-left"><a href="#0">Sushi Combos for <br>your Next Party</a></h6>
-										<span class="btn btn-sm btn-outline-dark text-nowrap">156 Recipes</span>
+								<figcaption class="tstbite-delicious border-top-0 rounded-bottom-6">
+									<div class="text-black pt-3 pb-4 px-4">
+										<div class="w-100 float-left">
+											<div class="float-left">
+												<div class="fabrx-ratings has-rating rating">
+													<input type="radio" id="radio26" name="rate6" value="1" checked="checked">
+													<label for="radio26" class="custom-starboxes"></label>
+													<input type="radio" id="radio27" name="rate6" value="2">
+													<label for="radio27" class="custom-starboxes"></label>
+													<input type="radio" id="radio28" name="rate6" value="3">
+													<label for="radio28" class="custom-starboxes"></label>
+													<input type="radio" id="radio29" name="rate6" value="4">
+													<label for="radio29" class="custom-starboxes"></label>
+													<input type="radio" id="radio30" name="rate6" value="5">
+													<label for="radio30" class="custom-starboxes"></label>
+												</div>
+											</div>
+										</div>
+										<div class="clearfix"></div>
+										<h6 class="inter-font f-size-20 mb-0 font-weight-semibold"><a href="#0" class="text-black">Mighty Cheesy Breakfast Burger</a></h6>
+										<div class="custom-total-receip-box">
+											<span class="btn btn-sm btn-outline-dark text-nowrap">156 Recipes</span>
+										</div>
 									</div>
 								</figcaption>
 							</figure>
 						</div>
-						<div class="col-md-6">
+						<div class="col-xl-4 col-md-6">
 							<figure class="my-3 tstbite-card">
-								<a href="#0" class="tstbite-animation stretched-link rounded-top-6">
-									<img src="{{asset('public/tastebite/images/menus/menu15.jpg')}}" class="w-100" alt="Menu">
+								<a href="#0" class="tstbite-animation rounded-top-6">
+									<img src="{{asset('public/tastebite/images/chef/chef4.png')}}" class="w-100" alt="Menu">
 								</a>
-								<figcaption class="tstbite-collection border-top-0 rounded-bottom-6">
-									<div class="text-black pt-3 pb-4 px-4 text-right">
-										<h6 class="mb-3 md-lg-0 pr-0 pr-lg-4 text-left">
-											<a href="#0">Everything Bagel</a>
-										</h6>
-										<span class="btn btn-sm btn-outline-dark text-nowrap">156 Recipes</span>
+								<figcaption class="tstbite-delicious border-top-0 rounded-bottom-6">
+									<div class="text-black pt-3 pb-4 px-4">
+										<div class="w-100 float-left">
+											<div class="float-left">
+												<div class="fabrx-ratings has-rating rating">
+													<input type="radio" id="radio26" name="rate6" value="1" checked="checked">
+													<label for="radio26" class="custom-starboxes"></label>
+													<input type="radio" id="radio27" name="rate6" value="2">
+													<label for="radio27" class="custom-starboxes"></label>
+													<input type="radio" id="radio28" name="rate6" value="3">
+													<label for="radio28" class="custom-starboxes"></label>
+													<input type="radio" id="radio29" name="rate6" value="4">
+													<label for="radio29" class="custom-starboxes"></label>
+													<input type="radio" id="radio30" name="rate6" value="5">
+													<label for="radio30" class="custom-starboxes"></label>
+												</div>
+											</div>
+										</div>
+										<div class="clearfix"></div>
+										<h6 class="inter-font f-size-20 mb-0 font-weight-semibold"><a href="#0" class="text-black">Mighty Cheesy Breakfast Burger</a></h6>
+										<div class="custom-total-receip-box">
+											<span class="btn btn-sm btn-outline-dark text-nowrap">156 Recipes</span>
+										</div>
 									</div>
 								</figcaption>
 							</figure>
 						</div>
-						<div class="col-md-6">
+						<div class="col-xl-4 col-md-6">
 							<figure class="my-3 tstbite-card">
-								<a href="#0" class="tstbite-animation stretched-link rounded-top-6">
-									<img src="{{asset('public/tastebite/images/menus/menu14.jpg')}}" class="w-100" alt="Menu">
+								<a href="#0" class="tstbite-animation rounded-top-6">
+									<img src="{{asset('public/tastebite/images/chef/chef5.png')}}" class="w-100" alt="Menu">
 								</a>
-								<figcaption class="tstbite-collection border-top-0 rounded-bottom-6">
-									<div class="text-black pt-3 pb-4 px-4 text-right">
-										<h6 class="mb-3 md-lg-0 pr-0 pr-lg-4 text-left"><a href="#0">Sushi Combos for <br>your Next Party</a></h6>
-										<span class="btn btn-sm btn-outline-dark text-nowrap">156 Recipes</span>
+								<figcaption class="tstbite-delicious border-top-0 rounded-bottom-6">
+									<div class="text-black pt-3 pb-4 px-4">
+										<div class="w-100 float-left">
+											<div class="float-left">
+												<div class="fabrx-ratings has-rating rating">
+													<input type="radio" id="radio26" name="rate6" value="1" checked="checked">
+													<label for="radio26" class="custom-starboxes"></label>
+													<input type="radio" id="radio27" name="rate6" value="2">
+													<label for="radio27" class="custom-starboxes"></label>
+													<input type="radio" id="radio28" name="rate6" value="3">
+													<label for="radio28" class="custom-starboxes"></label>
+													<input type="radio" id="radio29" name="rate6" value="4">
+													<label for="radio29" class="custom-starboxes"></label>
+													<input type="radio" id="radio30" name="rate6" value="5">
+													<label for="radio30" class="custom-starboxes"></label>
+												</div>
+											</div>
+										</div>
+										<div class="clearfix"></div>
+										<h6 class="inter-font f-size-20 mb-0 font-weight-semibold"><a href="#0" class="text-black">Mighty Cheesy Breakfast Burger</a></h6>
+										<div class="custom-total-receip-box">
+											<span class="btn btn-sm btn-outline-dark text-nowrap">156 Recipes</span>
+										</div>
 									</div>
 								</figcaption>
 							</figure>
 						</div>
-						<div class="col-md-6">
+						<div class="col-xl-4 col-md-6">
 							<figure class="my-3 tstbite-card">
-								<a href="#0" class="tstbite-animation stretched-link rounded-top-6">
-									<img src="{{asset('public/tastebite/images/menus/menu15.jpg')}}" class="w-100" alt="Menu">
+								<a href="#0" class="tstbite-animation rounded-top-6">
+									<img src="{{asset('public/tastebite/images/chef/chef6.png')}}" class="w-100" alt="Menu">
 								</a>
-								<figcaption class="tstbite-collection border-top-0 rounded-bottom-6">
-									<div class="text-black pt-3 pb-4 px-4 text-right">
-										<h6 class="mb-3 md-lg-0 pr-0 pr-lg-4 text-left">
-											<a href="#0">Everything Bagel</a>
-										</h6>
-										<span class="btn btn-sm btn-outline-dark text-nowrap">156 Recipes</span>
+								<figcaption class="tstbite-delicious border-top-0 rounded-bottom-6">
+									<div class="text-black pt-3 pb-4 px-4">
+										<div class="w-100 float-left">
+											<div class="float-left">
+												<div class="fabrx-ratings has-rating rating">
+													<input type="radio" id="radio26" name="rate6" value="1" checked="checked">
+													<label for="radio26" class="custom-starboxes"></label>
+													<input type="radio" id="radio27" name="rate6" value="2">
+													<label for="radio27" class="custom-starboxes"></label>
+													<input type="radio" id="radio28" name="rate6" value="3">
+													<label for="radio28" class="custom-starboxes"></label>
+													<input type="radio" id="radio29" name="rate6" value="4">
+													<label for="radio29" class="custom-starboxes"></label>
+													<input type="radio" id="radio30" name="rate6" value="5">
+													<label for="radio30" class="custom-starboxes"></label>
+												</div>
+											</div>
+										</div>
+										<div class="clearfix"></div>
+										<h6 class="inter-font f-size-20 mb-0 font-weight-semibold"><a href="#0" class="text-black">Mighty Cheesy Breakfast Burger</a></h6>
+										
+										<div class="custom-total-receip-box">
+											<span class="btn btn-sm btn-outline-dark text-nowrap">156 Recipes</span>
+										</div>
 									</div>
 								</figcaption>
 							</figure>

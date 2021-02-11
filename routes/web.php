@@ -1,6 +1,9 @@
 <?php
 
 Route::get("/","Frontcontroller@show_home")->name("show-home");
+
+Route::get("view_recipe","Frontcontroller@view_recipe")->name("view_recipe");
+
 /*Route::get('/', function () {
    Artisan::call('config:cache');
    return redirect('admin');
